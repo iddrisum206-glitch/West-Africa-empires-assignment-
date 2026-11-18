@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A student research project connecting the Ghana, Mali and Songhai empires with gold resources and petroleum geology in modern West Africa.">
+<title>West Africa: Empires, Gold & Petroleum</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--navy:#10283f;--gold:#d7a83e;--green:#2d7258;--cream:#f7f5ef;--ink:#243342;--muted:#637383;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65}
+header{background:linear-gradient(120deg,#10283f,#1b5260);color:white;padding:58px 7% 52px}
+header .tag{color:#f2ca72;text-transform:uppercase;letter-spacing:2px;font-size:.78rem;font-weight:bold}
+header h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.1;max-width:850px;margin:14px 0}
+header p{max-width:720px;color:#e4edf0;font-size:1.08rem}
+nav{position:sticky;top:0;background:#fff;z-index:999;display:flex;gap:22px;overflow-x:auto;padding:13px 7%;box-shadow:0 2px 12px #12283f16}
+nav a{color:var(--navy);text-decoration:none;font-weight:bold;white-space:nowrap;font-size:.9rem}
+main{max-width:1120px;margin:auto;padding:30px 22px 70px}
+section{margin:38px 0;scroll-margin-top:75px}
+h2{color:var(--navy);font-size:1.8rem;margin-bottom:10px}
+h3{color:var(--navy);margin-bottom:6px}
+.lead{font-size:1.06rem;color:#435463;max-width:850px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:17px}
+.card{background:white;border-radius:14px;padding:22px;box-shadow:0 5px 20px #10283f0c;border:1px solid #e9e6dd}
+.card .era{font-size:.78rem;color:var(--green);font-weight:bold;text-transform:uppercase;letter-spacing:1px}
+.card p{margin:8px 0}
+.callout{background:#fff7df;border-left:5px solid var(--gold);padding:18px 22px;border-radius:8px}
+#map{height:540px;border-radius:14px;border:1px solid #d9dedf;z-index:1}
+.map-note{font-size:.9rem;color:var(--muted);margin-top:10px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:12px 0;font-size:.9rem}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px}
+.gold{background:#d7a000}.oil{background:#256b9b}.history{background:#8c5bb5}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.stat{background:var(--navy);color:white;padding:22px;border-radius:12px}
+.stat strong{display:block;font-size:1.7rem;color:#f2ca72;line-height:1.25}
+.stat small{color:#d8e3e8}
+table{width:100%;border-collapse:collapse;background:white;border-radius:10px;overflow:hidden}
+th,td{text-align:left;padding:13px;border-bottom:1px solid #e8ecee;vertical-align:top}
+th{background:#e8eef0;color:var(--navy)}
+.references li{margin:10px 0;overflow-wrap:anywhere}
+a{color:#17628b}
+footer{background:#10283f;color:#dbe5e9;padding:30px 7%;text-align:center}
+footer strong{color:#f2ca72}
+@media(max-width:600px){header{padding:42px 6%}main{padding:20px 15px 50px}#map{height:430px}th,td{padding:9px;font-size:.88rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="tag">University of Energy and Natural Resources (UENR) • Petroleum Engineering • Level 100</div>
+  <h1>West Africa: Empires, Gold & Petroleum</h1>
+  <p>A geographical and geological study of the Ghana, Mali and Songhai empires and the occurrence of gold deposits and petroleum resources in present-day Africa.</p>
+  <p><strong>Student:</strong> ____________________ &nbsp; <strong>Index Number:</strong> ____________________</p>
+</header>
+<nav>
+  <a href="#overview">Overview</a><a href="#empires">The Empires</a><a href="#map-section">Interactive Map</a>
+  <a href="#gold">Gold Deposits</a><a href="#oil">Petroleum Potential</a><a href="#conclusion">Conclusion</a><a href="#references">References</a>
+</nav>
+<main>
+<section id="overview">
+<h2>1. Introduction</h2>
+<p class="lead">The Ghana, Mali and Songhai empires were major West African states whose power was closely connected to trade across the Sahara. Gold was one of the most valuable commodities in these networks. Today, parts of the same broad region contain important mineral belts and sedimentary basins that are relevant to mineral and petroleum exploration.</p>
+<div class="callout"><strong>Important distinction:</strong> Ancient gold trading does not prove that crude oil exists in the same place. Gold and petroleum form through different geological processes. Historical geography helps identify areas to investigate, but modern geological surveys and exploration data are needed to establish resource potential.</div>
+</section>
+
+<section id="empires">
+<h2>2. The Three West African Empires</h2>
+<div class="cards">
+ <article class="card"><div class="era">c. 6th–13th centuries</div><h3>Ghana Empire</h3>
+ <p>Its core was in the western Sahel, mainly in areas of present-day southeastern Mauritania and western Mali. Koumbi Saleh is commonly identified with its major royal and commercial centre.</p>
+ <p>The empire gained wealth by taxing and controlling trans-Saharan trade, including gold and salt. Much of the gold traded north came from gold-producing regions farther south.</p></article>
+ <article class="card"><div class="era">c. 13th–16th centuries</div><h3>Mali Empire</h3>
+ <p>The Mali Empire expanded across a large part of the western Sahel and savanna, including areas of present-day Mali, Guinea and Senegal. Important centres included Niani, Timbuktu and Djenné.</p>
+ <p>Its prosperity was linked to goldfields such as Bambuk and Bure, as well as trade routes connecting West Africa with North Africa.</p></article>
+ <article class="card"><div class="era">c. 15th–16th centuries</div><h3>Songhai Empire</h3>
+ <p>Songhai grew around the middle Niger River, with Gao as a major political centre. At its height it controlled important parts of present-day Mali and neighbouring areas.</p>
+ <p>It expanded commercial networks that moved gold, salt and other goods through cities such as Gao and Timbuktu.</p></article>
+</div>
+<p class="map-note">Dates and territorial descriptions are approximate. Historical boundaries changed over time and should not be treated as modern national borders.</p>
+</section>
+
+<section id="map-section">
+<h2>3. Interactive Map: Historical Centres, Goldfields & Petroleum Basins</h2>
+<p>This map combines approximate historical territories and major centres of the three empires with selected modern gold areas and petroleum basins. Select a marker or shaded area for details. Use the layer control in the top-right corner to turn each group on or off.</p>
+<div class="legend">
+ <span><i class="dot history"></i>Historical centres</span>
+ <span><i class="dot gold"></i>Gold areas</span>
+ <span><i class="dot oil"></i>Petroleum basins / provinces</span>
+ <span><i class="dot" style="background:#8c5bb5"></i>Approximate empire territories</span>
+</div>
+<div id="map" role="application" aria-label="Interactive map of West African historical centres, goldfields and petroleum basins"></div>
+<p class="map-note"><strong>Map interpretation:</strong> The shaded empire areas are illustrative reconstructions, not exact surveyed borders. The gold and petroleum symbols mark broad locations, not the full boundaries of deposits or basins. Modern country borders and historical territories changed over time. Basemap © OpenStreetMap contributors.</p>
+</section>
+
+<section id="gold">
+<h2>4. Gold Deposits in Present-Day West Africa</h2>
+<p>West Africa contains extensive gold mineralisation associated with ancient rocks of the West African Craton. Many important deposits occur in Paleoproterozoic Birimian volcanic and sedimentary rocks. Geological structures, including faults and shear zones, can provide pathways and sites for gold-bearing fluids.</p>
+<table>
+<thead><tr><th>Modern country / area</th><th>Examples</th><th>Geological significance</th></tr></thead>
+<tbody>
+<tr><td>Ghana</td><td>Obuasi, Tarkwa</td><td>Important gold-producing areas associated with Birimian rocks and other gold-bearing geological settings.</td></tr>
+<tr><td>Mali</td><td>Loulo, Morila</td><td>Major gold deposits within the West African Craton.</td></tr>
+<tr><td>Guinea</td><td>Bure goldfield</td><td>Historically important gold-producing region.</td></tr>
+<tr><td>Senegal–Mali border region</td><td>Bambuk goldfield</td><td>One of the historic gold-producing areas that supplied trans-Saharan trade.</td></tr>
+<tr><td>Burkina Faso</td><td>Several Birimian gold districts</td><td>Contains multiple gold deposits associated with the West African gold belt.</td></tr>
+</tbody></table>
+<p><strong>Connection to the empires:</strong> The historical importance of Bambuk and Bure helps explain why gold was central to the wealth and trade networks of Ghana and Mali, and why Songhai later benefited from the established regional trade system. It is the underlying geology—not the existence of an empire—that explains where gold deposits occur.</p>
+</section>
+
+<section id="oil">
+<h2>5. Crude Oil and Petroleum Exploration Potential</h2>
+<p>Petroleum exploration focuses on sedimentary basins where organic-rich source rocks may have generated hydrocarbons. A working petroleum system also needs suitable reservoir rocks, seals and traps, together with the right burial and temperature history.</p>
+<h3>The Taoudeni Basin: Mali and Mauritania</h3>
+<p>The Taoudeni Basin is a very large sedimentary basin extending across much of Mauritania and Mali. It lies within a region that overlaps the broad historical geography of the Ghana and Mali empires and areas later influenced by Songhai. The U.S. Geological Survey assessed the basin's undiscovered oil and gas potential.</p>
+<div class="stats">
+ <div class="stat"><strong>160 million barrels</strong><small>USGS mean estimate of undiscovered, technically recoverable conventional oil</small></div>
+ <div class="stat"><strong>1,880 billion cubic feet</strong><small>USGS mean estimate of undiscovered, technically recoverable conventional natural gas</small></div>
+</div>
+<p class="map-note">These figures are estimates from the USGS assessment published in 2016, based on 2015 assessment work. They are not confirmed reserves or proof of commercial discoveries.</p>
+<h3>Other petroleum example: Niger Delta</h3>
+<p>The Niger Delta, mainly in Nigeria and extending into Cameroon, is a well-known petroleum province. Its petroleum system developed in a thick sedimentary sequence containing source rocks, reservoirs and seals. It is geographically outside the core territories of the three empires, but provides a useful West African comparison showing how sedimentary geology can create major oil and gas provinces.</p>
+<h3>What petroleum engineers investigate</h3>
+<ul>
+<li><strong>Source rock:</strong> organic-rich rock capable of generating oil or gas.</li>
+<li><strong>Reservoir rock:</strong> porous and permeable rock that can store and transmit hydrocarbons.</li>
+<li><strong>Seal rock:</strong> low-permeability rock that prevents hydrocarbons from escaping.</li>
+<li><strong>Trap:</strong> a geological arrangement that allows hydrocarbons to accumulate.</li>
+<li><strong>Exploration:</strong> geological studies, geophysical surveys and drilling to test whether a commercial accumulation exists.</li>
+</ul>
+</section>
+
+<section id="conclusion">
+<h2>6. Conclusion</h2>
+<p>The Ghana, Mali and Songhai empires demonstrate the historical importance of West Africa's gold trade. Their former geographical sphere includes areas associated with important modern gold provinces and the Taoudeni sedimentary basin, which has been assessed for undiscovered petroleum resources. However, historical trade routes cannot by themselves predict oil or gold deposits. The presence of these resources is explained by geological conditions and must be investigated using modern geological mapping, geophysical methods, sampling and exploratory drilling.</p>
+<p>For petroleum engineering, the key lesson is that understanding the geological history of a region is essential when evaluating its potential energy resources.</p>
+</section>
+
+<section id="references">
+<h2>7. References</h2>
+<ol class="references">
+<li>U.S. Geological Survey (2016). <em>Assessment of Undiscovered Oil and Gas Resources of the Taoudeni Basin Province, Mali and Mauritania, 2015.</em> <a href="https://pubs.usgs.gov/publication/fs20163003" target="_blank" rel="noopener">USGS Fact Sheet 2016–3003</a>.</li>
+<li>U.S. Geological Survey (2026). <em>Assessment of Undiscovered Conventional Oil and Gas Resources in the Niger Delta Province of Nigeria and Cameroon.</em> <a href="https://pubs.usgs.gov/publication/fs20263028/full" target="_blank" rel="noopener">USGS Fact Sheet 2026–3028</a>.</li>
+<li>The Metropolitan Museum of Art. <em>The Trans-Saharan Gold Trade (7th–14th Century).</em> <a href="https://www.metmuseum.org/essays/the-trans-saharan-gold-trade-7th-14th-century" target="_blank" rel="noopener">Read the essay</a>.</li>
+<li>OpenStax, Rice University. <em>Medieval Sub-Saharan Africa.</em> <a href="https://openstax.org/books/world-history-volume-1/pages/15-2-medieval-sub-saharan-africa" target="_blank" rel="noopener">Read the chapter</a>.</li>
+<li>Review of the current state of knowledge on gold mineralization in Mali, Western Africa (2024). <a href="https://doi.org/10.1080/24749508.2024.2441514" target="_blank" rel="noopener">Journal article</a>.</li>
+</ol>
+</section>
+</main>
+<footer><strong>West Africa: Empires, Gold & Petroleum</strong><br>University of Energy and Natural Resources (UENR) • Petroleum Engineering • Level 100</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('map').setView([16.2,-4.5],4);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:18, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+// Approximate historical territories. These polygons are explanatory sketches,
+// not authoritative boundary data; borders shifted over time.
+const empireTerritories = L.layerGroup([
+ L.polygon([[24,-12],[23,-5],[20,-2],[17,-3],[15,-7],[16,-11],[19,-13],[22,-13]], {
+   color:'#8c5bb5', weight:2, fillColor:'#b99bd0', fillOpacity:.20, dashArray:'6 5'
+ }).bindPopup('<b>Ghana Empire (approximate core region)</b><br>Western Sahel, centred around the Koumbi Saleh area in parts of present-day southeastern Mauritania and western Mali.'),
+ L.polygon([[19,-12],[19,-3],[17,2],[14,4],[10,1],[8,-3],[9,-8],[12,-12],[16,-14]], {
+   color:'#a66a20', weight:2, fillColor:'#e2b45e', fillOpacity:.18, dashArray:'6 5'
+ }).bindPopup('<b>Mali Empire (approximate maximum sphere)</b><br>Broad area of influence across parts of present-day Mali, Guinea and Senegal. Its extent changed substantially over time.'),
+ L.polygon([[22,-5],[22,2],[19,5],[16,3],[14,1],[12,-2],[13,-5],[15,-7],[18,-7]], {
+   color:'#2d7258', weight:2, fillColor:'#78b69a', fillOpacity:.20, dashArray:'6 5'
+ }).bindPopup('<b>Songhai Empire (approximate maximum sphere)</b><br>Centred on the middle Niger and Gao, extending across parts of the western and central Sahel at its height.')
+]);
+const historical = L.layerGroup([
+ L.marker([16.65,-7.25]).bindPopup('<b>Koumbi Saleh area</b><br>Associated with the Ghana Empire’s major centre in present-day Mauritania.'),
+ L.marker([9.75,-8.0]).bindPopup('<b>Niani area</b><br>Traditionally identified as an important Mali imperial centre in present-day Guinea.'),
+ L.marker([16.77,-3.0]).bindPopup('<b>Timbuktu</b><br>Major scholarly and trading city linked to Mali and Songhai.'),
+ L.marker([16.27,-0.05]).bindPopup('<b>Gao</b><br>Important political and commercial centre of the Songhai Empire.'),
+ L.marker([13.9,-4.55]).bindPopup('<b>Djenné</b><br>Important Niger Inland Delta trading city associated with Mali.')
+]);
+const gold = L.layerGroup([
+ L.circleMarker([13.5,-11.5],{radius:8,color:'#b8860b',fillColor:'#d7a000',fillOpacity:.85}).bindPopup('<b>Bambuk goldfield</b><br>Historic gold-producing area around the Senegal–Mali region.'),
+ L.circleMarker([11.3,-10.7],{radius:8,color:'#b8860b',fillColor:'#d7a000',fillOpacity:.85}).bindPopup('<b>Bure goldfield</b><br>Historic goldfield in present-day Guinea.'),
+ L.circleMarker([6.2,-1.6],{radius:8,color:'#b8860b',fillColor:'#d7a000',fillOpacity:.85}).bindPopup('<b>Ghana gold belt</b><br>Approximate marker for major gold districts including Obuasi and Tarkwa.')
+]);
+const petroleum = L.layerGroup([
+ L.circleMarker([20.0,-7.0],{radius:10,color:'#174d78',fillColor:'#256b9b',fillOpacity:.75}).bindPopup('<b>Taoudeni Basin</b><br>Large sedimentary basin across Mali and Mauritania. USGS assessed undiscovered oil and gas resources.'),
+ L.circleMarker([5.0,5.0],{radius:10,color:'#174d78',fillColor:'#256b9b',fillOpacity:.75}).bindPopup('<b>Niger Delta petroleum province</b><br>Established oil and gas province in Nigeria and Cameroon.')
+]);
+empireTerritories.addTo(map);
+historical.addTo(map); gold.addTo(map); petroleum.addTo(map);
+L.control.layers(null,{
+ 'Approximate empire territories':empireTerritories,
+ 'Historical centres':historical,
+ 'Gold areas':gold,
+ 'Petroleum basins / provinces':petroleum
+},{collapsed:false}).addTo(map);
+</script>
+</body>
+</html>
